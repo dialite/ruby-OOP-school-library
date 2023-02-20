@@ -6,7 +6,8 @@ require_relative './student'
 require_relative './teacher'
 
 class App
-  def initialize
+  def initialize(menu)
+    @menu = menu
     @books = []
     @people = []
     @rentals = []
