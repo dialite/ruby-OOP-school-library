@@ -1,7 +1,11 @@
 class Rental
-  attr_accessor :date
+  attr_accessor :date, :book
 
-  def initialize(date)
+  def initialize(date, book)
     @date = date
-  end
+
+    # a rental belongs to a book
+    @book = book
+    book.rentals.push(self)
+  end  
 end
