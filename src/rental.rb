@@ -3,12 +3,16 @@ class Rental
 
   def initialize(date, book, person)
     @date = date
+    add_book(book)
+    add_person(person)
+  end
 
-    # a rental belongs to a book
+  def add_book(book)
     @book = book
     book.rentals << self
+  end
 
-    # a rental belongs to a person
+  def add_person(person)
     @person = person
     person.rentals << self
   end

@@ -18,7 +18,7 @@ class App
 
     @books.each_with_index do |book, index|
       result = "Title: \"#{book.title}\", Author: #{book.author}"
-      result = " #{index}) " + result if show_index
+      result = " [#{index}] " + result if show_index
       puts result
     end
     sleep 0.75
@@ -29,7 +29,7 @@ class App
     puts 'There is nobody yet! Kindly add a student or a teacher.' if @people.empty?
 
     @people.each_with_index do |person, index|
-      result = "[#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+      result = "[#{person.class}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
       result = "#{index}) " + result if show_index
       puts result
     end
@@ -84,6 +84,28 @@ class App
     puts 'Book created successfully'
     sleep 0.75
     @menu.option_list
+  end
+
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts "#{index + 1}) Title: #{book.title}, Author: #{book.author}" }
+    book_id = gets.chomp.to_i
+    puts 'Invalid input!' if !(book_id.is_a? Integer) && book_id >= @books.length
+
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_index do |person, index|
+      puts "#{index + 1}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    end
+    person_id = gets.chomp.to_i
+    puts 'Invalide input!' if !(person_id.is_a? Integer) && person_id >= @people.length
+
+    print 'Please enter the date in this format [yyyy-mm-dd]: '
+    date = gets.chomp.to_s
+
+    rental = Rental.new(date, @books[book_id], @people[person_id])
+    @rentals << rental
+
+    puts 'Rental created successfully'
   end
 
   def exit

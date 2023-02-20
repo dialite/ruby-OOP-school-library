@@ -30,7 +30,7 @@ class Person < Nameable
   end
 
   # person has many rentals
-   def add_rental(book, date)
+  def add_rental(book, date)
     Rental.new(date, book, self)
   end
 end

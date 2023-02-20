@@ -9,7 +9,7 @@ class Book
   end
 
   # A book has many rentals
-  def add_rentals=(person, date)
-    Rental.new(self, person, date)
+  def add_rental(date, person)
+    Rental.new(date, self, person)
   end
 end
