@@ -11,5 +11,5 @@ class Rental
     # a rental belongs to a person
     @person = person
     person.rentals << self
-  end  
+  end
 end
