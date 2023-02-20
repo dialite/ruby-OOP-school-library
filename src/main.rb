@@ -1,10 +1,22 @@
-require_relative './person'
-require_relative './decorator/capitalize_decorator'
-require_relative './decorator/trimmer_decorator'
+class MenuStart
+  def initialize
+    options_list
+  end
+  def options_list
+    puts 'Welcome to School Library!'
+    puts "Kindly choose an option by entering a number: 
+    1 - List all books
+    2 - List all people
+    3 - Create a person
+    4 - Create a book
+    5 - Create a rental
+    6 - List all rentals for a given person id
+    7 - Exit"
+  end
+end
 
-person = Person.new(22, 'maximilianus')
-person.correct_name
-capitalizedperson = CapitalizeDecorator.new(person)
-capitalizedperson.correct_name
-capitalizedtrimmedperson = TrimmerDecorator.new(capitalizedperson)
-capitalizedtrimmedperson.correct_name
+def main
+  MenuStart.new
+end
+
+main
