@@ -6,7 +6,7 @@ class Rental
 
     # a rental belongs to a book
     @book = book
-    book.rentals.push(self)
+    book.rentals << self
 
     # a rental belongs to a person
     @person = person
