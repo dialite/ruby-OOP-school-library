@@ -1,12 +1,12 @@
 require_relative './app'
 class MenuStart
   def initialize
+    puts 'Welcome to School Library!'
     @app = App.new(self)
     option_list
   end
 
   def option_list
-    puts 'Welcome to School Library!'
     puts "Kindly choose an option by entering a number:
     1 - List all books
     2 - List all people
