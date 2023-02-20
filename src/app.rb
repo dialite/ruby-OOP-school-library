@@ -73,4 +73,8 @@ class App
 
     puts "Teacher with id #{teacher.id} successfully created"
   end
+
+  def exit
+    puts 'Goodbye...'
+  end
 end
