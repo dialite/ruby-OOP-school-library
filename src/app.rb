@@ -36,4 +36,41 @@ class App
     sleep 0.75
     @menu.option_list
   end
+
+  def create_person
+    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    type = gets.chomp.to_i
+
+    puts 'Invalid input' if type != 1 && type != 2
+    add_student if type == 1
+    add_teacher if type == 2
+    sleep 0.75
+    @menu.option_list
+  end
+
+  def add_student
+    print 'Enter the name of the student: '
+    name = gets.chomp
+    print 'Enter the age of the student: '
+    age = gets.chomp.to_i
+    print 'Has parent permission? [Y/N]: '
+    parent_permission = gets.chomp.to_s.downcase == 'y'
+    student = Student.new(age, name, parent_permission: parent_permission)
+    @people << student
+
+    puts "Student with id #{student.id} successfully created"
+  end
+
+  def add_teacher
+    print 'Enter the name of the teacher: '
+    name = gets.chomp
+    print 'Enter the age of the teacher: '
+    age = gets.chomp.to_i
+    print "And teacher's specialization: "
+    specilization = gets.chomp.to_s
+    teacher = Teacher.new(specilization, age, name)
+    @people << teacher
+
+    puts "Teacher with id #{teacher.id} successfully created"
+  end
 end
