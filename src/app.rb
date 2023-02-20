@@ -106,6 +106,25 @@ class App
     @rentals << rental
 
     puts 'Rental created successfully'
+    sleep 0.75
+    @menu.option_list
+  end
+
+  def list_rentals_by_person_id
+    puts 'No person entry found' if @people.empty?
+    @menu.option_list
+    print 'Enter person ID: '
+    id = gets.chomp.to_i
+    @people.each do |person|
+      next unless person.id == id
+
+      puts 'Rentals:'
+      person.rentals.each do |rental|
+        puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author} "
+      end
+    end
+    sleep 0.75
+    @menu.option_list
   end
 
   def exit
