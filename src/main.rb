@@ -1,3 +1,4 @@
+require_relative './app'
 class MenuStart
   def initialize
     option_list
