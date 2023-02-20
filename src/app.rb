@@ -24,4 +24,16 @@ class App
     sleep 0.75
     @menu.option_list
   end
+
+  def list_all_people(show_index: false)
+    puts 'There is nobody yet! Kindly add a student or a teacher.' if @people.empty?
+
+    @people.each_with_index do |person, index|
+      result = "[#{person.class.name}] ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+      result = "#{index}) " + result if show_index
+      puts result
+    end
+    sleep 0.75
+    @menu.option_list
+  end
 end
