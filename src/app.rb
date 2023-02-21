@@ -5,6 +5,7 @@ require_relative './rental'
 require_relative './student'
 require_relative './teacher'
 require_relative './create_contents/create_book'
+require_relative './create_contents/create_person'
 class App
   def initialize(menu)
     @menu = menu
@@ -49,17 +50,6 @@ class App
         puts "Date: #{rental.date}, Book: \"#{rental.book.title}\" by #{rental.book.author} "
       end
     end
-    sleep 0.75
-    @menu.option_list
-  end
-
-  def create_person
-    puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    type = gets.chomp.to_i
-
-    puts 'Invalid input' if type != 1 && type != 2
-    add_student if type == 1
-    add_teacher if type == 2
     sleep 0.75
     @menu.option_list
   end
