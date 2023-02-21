@@ -1,7 +1,6 @@
 # rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 def create_rental
-  puts 'There are no books and person yet! Kindly add books and a person.' if @books.empty? || @people.empty?
-  @menu.option_list
+  puts 'There are no books and person yet! Kindly add books and a person.' if @books.empty?
   puts 'Select a book from the following list by number'
   @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
   book_id = gets.chomp.to_i
