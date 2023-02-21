@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 def create_rental
   puts 'There are no books and person yet! Kindly add books and a person.' if @books.empty? || @people.empty?
   @menu.option_list
@@ -23,3 +24,4 @@ def create_rental
   sleep 0.75
   @menu.option_list
 end
+# rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
