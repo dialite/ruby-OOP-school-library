@@ -25,7 +25,6 @@ class CreateMethods
   end
 
   def self.create_student(people)
-    puts
     print 'Enter the name of the student: '
     name = gets.chomp
     print 'Enter the age of the student: '
@@ -34,18 +33,16 @@ class CreateMethods
     parent_permission = gets.chomp.downcase
     case parent_permission
     when 'y'
-        parent_permission = true
+      parent_permission = true
     when 'n'
-        parent_permission = false
+      parent_permission = false
     end
-  
     name_check = !name.empty? && name.is_a?(String)
     age_check = age < 18 && age.is_a?(Integer)
     return puts 'Fill all options and age should be less than 18' unless name_check && age_check
-  
+
     student = Student.new(age, nil, name, parent_permission: parent_permission)
     people << student
-    puts
     puts "Student with id #{student.id} successfully created"
     puts
   end
@@ -57,14 +54,14 @@ class CreateMethods
     age = gets.chomp.to_i
     print "And teacher's specialization: "
     specialization = gets.chomp.to_s
-  
+
     name_check = !name.empty? && name.is_a?(String)
     age_check = age >= 18 && age.is_a?(Integer)
     specialization_check = !specialization.empty? && specialization.is_a?(String)
     unless name_check && age_check && specialization_check
       return puts 'Fill all options and age should be equal or more than 18'
     end
-  
+
     teacher = Teacher.new(age, specialization, name)
     people << teacher
     puts
@@ -74,51 +71,51 @@ class CreateMethods
 
 
 
-#   def self.create_rental(people, books, rentals)
-#     puts '\nSelect a book from the following list by number'
-#     List.list_books(books)
-#     book_choice = gets.chomp.to_i
-#     while book_choice.negative? || book_choice >= books.length
-#       print "Please enter a number within 0 - #{books.length - 1} range: "
-#       book_choice = gets.chomp.to_i
-#     end
-#     book = books[book_choice]
-#     puts 'Select a person from the following list by number (not id)'
-#     List.list_people(people)
-#     person_choice = gets.chomp.to_i
-#     while person_choice.negative? || person_choice >= people.length
-#       print "Please enter a number within 0 - #{people.length - 1} range: "
-#       person_choice = gets.chomp.to_i
-#     end
-#     person = people[person_choice]
-#     print 'Enter date of booking: (yyyy/mm/dd) : '
-#     date = gets.chomp.strip
-#     rentals << person.add_rental(date, book)
-#   end
+  #   def self.create_rental(people, books, rentals)
+  #     puts '\nSelect a book from the following list by number'
+  #     List.list_books(books)
+  #     book_choice = gets.chomp.to_i
+  #     while book_choice.negative? || book_choice >= books.length
+  #       print "Please enter a number within 0 - #{books.length - 1} range: "
+  #       book_choice = gets.chomp.to_i
+  #     end
+  #     book = books[book_choice]
+  #     puts 'Select a person from the following list by number (not id)'
+  #     List.list_people(people)
+  #     person_choice = gets.chomp.to_i
+  #     while person_choice.negative? || person_choice >= people.length
+  #       print "Please enter a number within 0 - #{people.length - 1} range: "
+  #       person_choice = gets.chomp.to_i
+  #     end
+  #     person = people[person_choice]
+  #     print 'Enter date of booking: (yyyy/mm/dd) : '
+  #     date = gets.chomp.strip
+  #     rentals << person.add_rental(date, book)
+  #   end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
-def self.create_rental(people, books, rentals)
+  # rubocop:disable Metrics/CyclomaticComplexity
+  def self.create_rental(people, books, rentals)
     puts 'There are no books and person yet! Kindly add books and a person.' if books.empty?
     puts 'Select a book from the following list by number'
     books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
     book_id = gets.chomp.to_i
     puts 'Invalid input!' if !(book_id.is_a? Integer) && book_id > books.length
-  
+
     puts 'Select a person from the following list by number (not id)'
     people.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_id = gets.chomp.to_i
     puts 'Invalide input!' if !(person_id.is_a? Integer) && person_id > people.length
-  
+
     print 'Please enter the date in this format [yyyy-mm-dd]: '
     date = gets.chomp.to_s
-  
+
     rental = Rental.new(date, books[book_id], people[person_id])
     rentals << rental
-  
+
     puts 'Rental created successfully'
     sleep 0.75
   end
-  # rubocop:enable Metrics/CyclomaticComplexity  
+  # rubocop:enable Metrics/CyclomaticComplexity
 end

@@ -1,7 +1,7 @@
 require_relative './logic'
 
 class ListMethods
-def self.list_people(people)
+  def self.list_people(people)
     puts 'There is nobody yet! Kindly add a student or a teacher.' if people.empty?
     puts
     people.each_with_index do |person, index|
@@ -23,15 +23,15 @@ def self.list_people(people)
     sleep 0.75
   end
 
-    def self.list_rentals(people)
-        puts 'No person entry found' if people.empty?
-        puts
-        puts 'Enter person ID: '
-        person_id = gets.chomp.to_i
-        person = Logic.find(people, person_id)
-        puts 'Rentals:'
-        person.rentals.each do |rental|
-          puts "Date: #{rental.date} Book: #{rental.book.title} by #{rental.book.author}"
-        end
-      end
+  def self.list_rentals(people)
+    puts 'No person entry found' if people.empty?
+    puts
+    puts 'Enter person ID: '
+    person_id = gets.chomp.to_i
+    person = Logic.find(people, person_id)
+    puts 'Rentals:'
+    person.rentals.each do |rental|
+      puts "Date: #{rental.date} Book: #{rental.book.title} by #{rental.book.author}"
+    end
+  end
 end

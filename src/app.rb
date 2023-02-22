@@ -10,7 +10,7 @@ class App
   end
 
   def option_list
-        puts "Kindly choose an option by entering a number:
+    puts "Kindly choose an option by entering a number:
         1 - List all books
         2 - List all people
         3 - Create a person
@@ -19,6 +19,7 @@ class App
         6 - List all rentals for a given person ID
         7 - Exit"
   end
+
   def select_option(user_input)
     case user_input
     when 1
@@ -44,7 +45,7 @@ class App
       user_input = gets.chomp.strip.to_i
       select_option(user_input)
     end
-    puts 'Goodbye...' 
+    puts 'Goodbye...'
     SaveData.save(@books, @people, @rentals)
   end
 
@@ -59,4 +60,3 @@ class App
     end
   end
 end
-
