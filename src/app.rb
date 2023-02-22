@@ -1,10 +1,11 @@
 require_relative './data_manager/savedata'
 require_relative './create_methods'
+require_relative './data_manager/loaddata'
 class App
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = LoadData.load_books
+    @people = LoadData.load_people
+    @rentals = LoadData.load_rentals(@books, @people)
   end
 
   def option_list

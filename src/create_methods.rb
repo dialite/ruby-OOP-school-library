@@ -16,7 +16,6 @@ class CreateMethods
     return puts 'Fill all options and age should be less than 18' unless title_check && author_check
 
     book = Book.new(title, author)
-    puts book
     books << book
     puts
     puts 'Book created successfully'
@@ -69,29 +68,29 @@ class CreateMethods
     puts
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
   def self.create_rental(people, books, rentals)
     puts 'There are no books and person yet! Kindly add books and a person.' if books.empty?
     puts 'Select a book from the following list by number'
-    books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-    book_id = gets.chomp.to_i
-    puts 'Invalid input!' if !(book_id.is_a? Integer) && book_id > books.length
-
-    puts 'Select a person from the following list by number (not id)'
-    people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+    ListMethods.list_books(books)
+    book_choice = gets.chomp.to_i
+    while book_choice.negative? || book_choice >= books.length
+      print "Please enter a number within 0 - #{books.length - 1} range: "
+      book_choice = gets.chomp.to_i
     end
-    person_id = gets.chomp.to_i
-    puts 'Invalide input!' if !(person_id.is_a? Integer) && person_id > people.length
-
+    book = books[book_choice]
+    puts 'Select a person from the following list by number (not id)'
+    ListMethods.list_people(people)
+    person_choice = gets.chomp.to_i
+    while person_choice.negative? || person_choice >= people.length
+      print "Please enter a number within 0 - #{people.length - 1} range: "
+      person_choice = gets.chomp.to_i
+    end
+    person = people[person_choice]
     print 'Please enter the date in this format [yyyy-mm-dd]: '
-    date = gets.chomp.to_s
-
-    rental = Rental.new(date, books[book_id], people[person_id])
-    rentals << rental
+    date = gets.chomp.strip
+    rentals << person.add_rental(date, book)
 
     puts 'Rental created successfully'
     sleep 0.75
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 end
