@@ -10,7 +10,7 @@ require_relative './create_contents/create_rental'
 class App
   def initialize(menu)
     @menu = menu
-    @books = []
+    @books = LoadData.load_books
     @people = []
     @rentals = []
   end
