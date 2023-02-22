@@ -68,6 +68,7 @@ class CreateMethods
     puts
   end
 
+  # rubocop:disable Metrics/MethodLength
   def self.create_rental(people, books, rentals)
     puts 'There are no books and person yet! Kindly add books and a person.' if books.empty?
     puts 'Select a book from the following list by number'
@@ -89,8 +90,8 @@ class CreateMethods
     print 'Please enter the date in this format [yyyy-mm-dd]: '
     date = gets.chomp.strip
     rentals << person.add_rental(date, book)
-
     puts 'Rental created successfully'
     sleep 0.75
   end
+  # rubocop:enable Metrics/MethodLength
 end
