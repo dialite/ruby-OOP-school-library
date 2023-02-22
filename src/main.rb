@@ -1,6 +1,5 @@
 require_relative './app'
 
-
 def main
   puts
   puts 'Welcome to School Library!'

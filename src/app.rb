@@ -1,7 +1,5 @@
 require_relative './data_manager/savedata'
 require_relative './create_methods'
-
-
 class App
   def initialize
     @books = []

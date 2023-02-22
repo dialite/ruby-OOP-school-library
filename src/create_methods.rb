@@ -69,30 +69,6 @@ class CreateMethods
     puts
   end
 
-
-
-  #   def self.create_rental(people, books, rentals)
-  #     puts '\nSelect a book from the following list by number'
-  #     List.list_books(books)
-  #     book_choice = gets.chomp.to_i
-  #     while book_choice.negative? || book_choice >= books.length
-  #       print "Please enter a number within 0 - #{books.length - 1} range: "
-  #       book_choice = gets.chomp.to_i
-  #     end
-  #     book = books[book_choice]
-  #     puts 'Select a person from the following list by number (not id)'
-  #     List.list_people(people)
-  #     person_choice = gets.chomp.to_i
-  #     while person_choice.negative? || person_choice >= people.length
-  #       print "Please enter a number within 0 - #{people.length - 1} range: "
-  #       person_choice = gets.chomp.to_i
-  #     end
-  #     person = people[person_choice]
-  #     print 'Enter date of booking: (yyyy/mm/dd) : '
-  #     date = gets.chomp.strip
-  #     rentals << person.add_rental(date, book)
-  #   end
-
   # rubocop:disable Metrics/CyclomaticComplexity
   def self.create_rental(people, books, rentals)
     puts 'There are no books and person yet! Kindly add books and a person.' if books.empty?
