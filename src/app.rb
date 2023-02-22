@@ -1,6 +1,7 @@
 require_relative './data_manager/savedata'
 require_relative './create_methods'
 require_relative './data_manager/loaddata'
+
 class App
   def initialize
     @books = LoadData.load_books

@@ -1,6 +1,5 @@
 require_relative '../src/classroom'
 
-
 describe Classroom do
   before :each do
     @classroom = Classroom.new('E-4')

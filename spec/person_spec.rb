@@ -2,7 +2,6 @@ require_relative '../src/person'
 require_relative '../src/book'
 require_relative '../src/rental'
 
-
 describe Person do
   before :each do
     @person = Person.new(22, 'Zia')
@@ -18,8 +17,8 @@ describe Person do
 
   context 'Can a person use services' do
     it "can_use_services? method returns true if age > 18 and parent permission == 'y'" do
-        expect(@person.can_use_services?).to eql true
-      end
+      expect(@person.can_use_services?).to eql true
+    end
   end
 
   context 'A person rent a book' do
