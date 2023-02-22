@@ -3,7 +3,7 @@ require_relative '../src/classroom'
 
 describe Student do
   before :each do
-    @student = Student.new(26, 'zia', parent_permission: true)
+    @student = Student.new(26, nil, 'zia', parent_permission: true)
   end
 
   it 'student class returns student object' do

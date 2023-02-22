@@ -23,7 +23,7 @@ describe Person do
 
   context 'A person rent a book' do
     it 'length of rentals should increase by one' do
-      @person.add_rental(Book.new('js', 'zia'), '2022/08/30')
+      @person.add_rental('2022/08/30', Book.new('js', 'zia'))
       expect(@person.rentals.length).to be 1
       expect(@person.rentals[0].book.title).to eq 'js'
       expect(@person.rentals[0].book.author).to eq 'zia'

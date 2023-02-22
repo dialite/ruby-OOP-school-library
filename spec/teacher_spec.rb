@@ -2,7 +2,7 @@ require_relative '../src/teacher'
 
 describe Teacher do
   before :each do
-    @teacher = Teacher.new('math', 30, 'zia', parent_permission: true)
+    @teacher = Teacher.new(30, 'math', 'zia', parent_permission: true)
   end
 
   it 'teacher class should be instance of student' do
