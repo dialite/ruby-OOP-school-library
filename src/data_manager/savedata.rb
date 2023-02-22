@@ -10,7 +10,7 @@ class SaveData
   def self.save_books(books)
     File.write('./src/data/books.json', []) unless File.exist?('./src/data/books.json')
     records = []
-    books.each { |book| records << { title: book.title, author: book.author } }
+    books.each { |book| records.push({ title: book.title, author: book.author }) }
     File.write('./src/data/books.json', JSON.generate(records))
   end
 

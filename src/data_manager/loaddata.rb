@@ -5,7 +5,7 @@ class LoadData
     books = []
     File.write('./src/data/books.json', []) unless File.exist?('./src/data/books.json')
     records = JSON.parse(File.read('./src/data/books.json'))
-    records.each { |record| books << Book.new(record['title'], record['author']) }
+    records.each { |record| books.push(Book.new(record['title'], record['author'])) }
     books
   end
 
@@ -23,7 +23,7 @@ class LoadData
                  Teacher.new(record['age'], '', record['name'])
                end
       person.id = record['id']
-      people << person
+      people.push(person)
     end
     people
   end
@@ -36,7 +36,7 @@ class LoadData
       book = books.select { |b| b.title == record['title'] }[0]
       person = people.select { |p| p.id == record['person_id'] }[0]
       rental = person.add_rental(record['date'], book)
-      rentals << rental
+      rentals.push(rental)
     end
     rentals
   end
