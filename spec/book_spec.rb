@@ -5,7 +5,7 @@ describe Book do
   before :each do
     @book = Book.new('think and growth rich', 'Rabert kyosaki')
   end
-  context 'the added book details should be as follow' do
+  context 'The added book details should be as follow' do
     it 'the book title is title: think and growth rich, the book author is author: Rabert kyosaki' do
       expect(@book.title).to eq('think and growth rich')
       expect(@book.author).to eq('Rabert kyosaki')
