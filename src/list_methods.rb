@@ -29,9 +29,13 @@ class ListMethods
     puts 'Enter person ID: '
     person_id = gets.chomp.to_i
     person = Logic.find(people, person_id)
-    puts 'Rentals:'
-    person.rentals.each do |rental|
-      puts "Date: #{rental.date} Book: #{rental.book.title} by #{rental.book.author}"
+    if person
+      puts 'Rentals:'
+      person.rentals.each do |rental|
+        puts "Date: #{rental.date} Book: #{rental.book.title} by #{rental.book.author}"
+      end
+    else
+      puts "Person with ID #{person_id} not currently found"
     end
   end
 end
