@@ -7,15 +7,21 @@ class SaveData
     save_rentals(rentals)
   end
 
+  # saves book created to JSON
   def self.save_books(books)
-    File.write('./src/data/books.json', []) unless File.exist?('./src/data/books.json')
+    filepath = './src/data/books.json'
+
+    File.write(filepath, []) unless File.exist?(filepath)
     records = []
     books.each { |book| records.push({ title: book.title, author: book.author }) }
-    File.write('./src/data/books.json', JSON.generate(records))
+    File.write(filepath, JSON.generate(records))
   end
 
+  # saves person (student and teacher) created to JSON
   def self.save_people(people)
-    File.write('./src/data/people.json', []) unless File.exist?('./src/data/people.json')
+    filepath = './src/data/people.json'
+
+    File.write(filepath, []) unless File.exist?(filepath)
     records = []
     people.each do |person|
       records << {
@@ -26,11 +32,14 @@ class SaveData
         parent_permission: person.can_use_services?
       }
     end
-    File.write('./src/data/people.json', JSON.generate(records))
+    File.write(filepath, JSON.generate(records))
   end
 
+  # saves rentals created to JSON
   def self.save_rentals(rentals)
-    File.write('./src/data/rentals.json', []) unless File.exist?('./src/data/rentals.json')
+    filepath = './src/data/rentals.json'
+
+    File.write(filepath, []) unless File.exist?(filepath)
     records = []
     rentals.each do |rental|
       records << {
@@ -41,6 +50,6 @@ class SaveData
         author: rental.book.author
       }
     end
-    File.write('./src/data/rentals.json', JSON.generate(records))
+    File.write(filepath, JSON.generate(records))
   end
 end

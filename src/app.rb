@@ -38,25 +38,31 @@ class App
   end
 
   def process
-    user_input = 0
-    while user_input != 7
+    loop do
       option_list
-      puts 'Kindly choose an option by entering a number [From 1-7]'
+      puts 'Please choose an option by entering a number between 1 and 7:'
       user_input = gets.chomp.strip.to_i
       select_option(user_input)
+      break if user_input == 7
     end
+
     puts 'Goodbye...'
     SaveData.save(@books, @people, @rentals)
   end
 
   def create_person
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+    puts 'Do you want to create a student (1) or a teacher (2)?'
+    print 'Please enter the corresponding number: '
     choice = gets.chomp.strip.to_i
+
     case choice
     when 1
       CreateMethods.create_student(@people)
     when 2
       CreateMethods.create_teacher(@people)
+    else
+      puts 'Invalid choice. Please enter 1 or 2.'
+      create_person
     end
   end
 end
